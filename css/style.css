@@ -1,0 +1,909 @@
+:root {
+    --mbg-navy: #0f172a;
+    --mbg-blue-dark: #1e3a8a;
+    --mbg-blue-primary: #2563eb;
+    --mbg-blue-light: #3b82f6;
+    --mbg-cyan: #06b6d4;
+    --glass-card: rgba(15, 23, 42, 0.78);
+    --glass-inner: rgba(30, 58, 138, 0.4);
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-glow: rgba(59, 130, 246, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at 50% 10%, #1e40af 0%, #1e3a8a 40%, #0f172a 100%);
+    background-attachment: fixed;
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px 12px;
+}
+
+/* ==========================================
+   MAIN CARD CONTAINER
+   ========================================== */
+.main-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--glass-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.25);
+    border: 1px solid var(--border-glow);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================
+   HEADER & LOGO LAYOUT
+   ========================================== */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.15);
+    margin-bottom: 16px;
+}
+
+.logo-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.logo-box-item {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    min-width: 75px;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, rgba(37, 99, 235, 0) 70%);
+    animation: logoPulse 3s infinite alternate;
+}
+
+.logo-img-custom {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.logo-box-item:hover .logo-img-custom {
+    transform: scale(1.08);
+}
+
+.logo-v-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+    border-radius: 2px;
+}
+
+.badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.badge-official {
+    background: linear-gradient(135deg, #06b6d4, #2563eb);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(6, 182, 212, 0.4);
+}
+
+.badge-live {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #34d399;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.main-title {
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 30%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.2px;
+    margin-bottom: 14px;
+}
+
+.institution-card {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(8px);
+}
+
+.inst-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inst-label {
+    font-size: 9.5px;
+    color: var(--mbg-cyan);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.inst-value {
+    font-size: 12px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.inst-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================
+   BANNER TANGGAL & FOTO SHOWCASE
+   ========================================== */
+.date-banner {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.6), rgba(6, 182, 212, 0.6));
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.image-container {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.image-zoomable {
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.image-zoomable:hover {
+    transform: scale(1.01);
+    filter: brightness(1.05);
+}
+
+.menu-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    filter: brightness(0.95);
+}
+
+.image-container:hover .menu-image {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+}
+
+.badge-status {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(16, 185, 129, 0.9);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+/* ==========================================
+   ALERT IMBAUAN
+   ========================================== */
+.alert-card {
+    background: rgba(239, 68, 68, 0.15);
+    border-left: 5px solid #ef4444;
+    padding: 14px 16px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(239, 68, 68, 0.3);
+    border-right: 1px solid rgba(239, 68, 68, 0.3);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.alert-header h2 {
+    font-size: 13.5px;
+    color: #fca5a5;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.alert-list {
+    padding-left: 18px;
+    font-size: 12px;
+    color: #fecdd3;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   SECTION TITLE & PROGRESS BAR
+   ========================================== */
+.section-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.section-title-wrap h2 {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.completion-tag {
+    font-size: 11px;
+    color: var(--mbg-cyan);
+    font-weight: 700;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mbg-cyan), var(--mbg-blue-light));
+    border-radius: 10px;
+    transition: width 1.2s ease-in-out;
+}
+
+/* ==========================================
+   KOMPRENG CARD GRID
+   ========================================== */
+.kompreng-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.kompreng-card {
+    background: var(--glass-inner);
+    border: 1px solid var(--border-glow);
+    padding: 14px 12px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kompreng-card:hover {
+    transform: translateY(-4px);
+    background: rgba(37, 99, 235, 0.35);
+    border-color: var(--mbg-cyan);
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+}
+
+.kompreng-card.full-width {
+    grid-column: span 2;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 14px 18px;
+    gap: 14px;
+}
+
+.kompreng-icon-box {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.full-width .kompreng-icon-box {
+    margin-bottom: 0;
+}
+
+.kompreng-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.kompreng-category {
+    font-size: 10.5px;
+    color: var(--mbg-cyan);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kompreng-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+    margin: 4px 0 6px 0;
+}
+
+.kompreng-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ==========================================
+   TABEL GIZI 3 PORSI (BALITA, KECIL, BESAR)
+   ========================================== */
+.gizi-card-container {
+    background: var(--glass-inner);
+    border: 1px solid var(--border-glow);
+    padding: 18px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.gizi-table-wrapper {
+    width: 100%;
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.gizi-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.gizi-table th, 
+.gizi-table td {
+    padding: 10px 6px;
+    vertical-align: middle;
+}
+
+.gizi-table thead tr {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.gizi-table th.th-label {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 34%;
+}
+
+.gizi-table th.th-balita,
+.gizi-table th.th-kecil,
+.gizi-table th.th-besar {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--mbg-cyan);
+    text-align: center;
+    line-height: 1.2;
+    padding: 8px 4px;
+    width: 22%;
+}
+
+.gizi-table th span {
+    display: block;
+    font-size: 8.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.gizi-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+}
+
+.gizi-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.gizi-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.td-label {
+    font-size: 11.5px;
+    color: var(--text-light);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.td-val {
+    font-size: 12px;
+    color: #e2e8f0;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.td-val.highlight {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* FOOTNOTE STANDAR AKG */
+.akg-footnote {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* ==========================================
+   KALENDER OPERASIONAL
+   ========================================== */
+.calendar-card {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(37, 99, 235, 0.8));
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.calendar-header h3 {
+    font-size: 13.5px;
+    margin-bottom: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.d-label {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+}
+
+.d-box {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 10px 2px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.d-box.holiday { opacity: 0.3; }
+
+.d-box.active {
+    background: #ffffff;
+    color: var(--mbg-blue-dark);
+    font-weight: 800;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.tag { display: block; font-size: 8.5px; margin-top: 3px; }
+.active .tag { color: #16a34a; font-weight: 800; }
+
+/* ==========================================
+   CARD LAYANAN PENGADUAN (WHATSAPP)
+   ========================================== */
+.feedback-card {
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feedback-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.feedback-icon {
+    font-size: 2rem;
+    background: rgba(16, 185, 129, 0.2);
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.feedback-text h4 {
+    color: #f8fafc;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.feedback-text p {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.feedback-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #10b981;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.feedback-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   FOOTER IDENTITAS
+   ========================================== */
+.footer-card {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-icon-glow {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    animation: iconGlow 3s infinite ease-in-out;
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.footer-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.footer-value {
+    font-size: 13.5px;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.footer-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* ==========================================
+   MODAL LIGHTBOX ZOOM FOTO
+   ========================================== */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 750px;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #cbd5e1;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #f1f5f9;
+    font-size: 38px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #38bdf8;
+}
+
+/* ==========================================
+   FORM ADMIN STYLE
+   ========================================== */
+.admin-card {
+    max-width: 520px;
+}
+
+.admin-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--glass-inner);
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border-glow);
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--mbg-cyan);
+    letter-spacing: 0.3px;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 12px 14px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 12.5px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--mbg-cyan);
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.input-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-secondary {
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px dashed var(--mbg-cyan);
+    color: var(--mbg-cyan);
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--mbg-blue-primary), var(--mbg-cyan));
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.5);
+}
+
+.status-msg {
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.form-input-file {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px dashed var(--mbg-cyan);
+    padding: 12px;
+    border-radius: 12px;
+    color: var(--text-light);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-input-file:hover {
+    background: rgba(6, 182, 212, 0.15);
+}
+
+.image-preview-wrapper {
+    margin-top: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border-glow);
+    max-height: 200px;
+}
+
+.preview-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==========================================
+   ANIMASI & KEYFRAMES
+   ========================================== */
+@keyframes iconGlow {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 0 18px rgba(56, 189, 248, 0.45); }
+}
+
+@keyframes logoPulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1.04); box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); }
+    100% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
