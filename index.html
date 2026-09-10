@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Makanan Bergizi Gratis (MBG)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main-card">
+        
+        <!-- HEADER / IDENTITAS DENGAN DUA LOGO BERDAMPINGAN SEJAJAR -->
+        <header class="header">
+            <!-- Pembungkus Dua Logo Sejajar Horizontal -->
+            <div class="logo-row-container">
+                <!-- Logo 1: BGN / MBG -->
+                <div class="logo-box-item">
+                    <div class="logo-glow"></div>
+                    <img src="images/logo-mbg.png" alt="Logo MBG" class="logo-img-custom" onerror="this.src='https://via.placeholder.com/80/1e3a8a/ffffff?text=MBG'">
+                </div>
+
+                <!-- Garis Pembatas Vertikal -->
+                <div class="logo-v-line"></div>
+
+                <!-- Logo 2: Yayasan Nan Tigo Hati Berbagi -->
+                <div class="logo-box-item">
+                    <div class="logo-glow"></div>
+                    <img src="images/logoyayasan.png" alt="Logo Yayasan" class="logo-img-custom" onerror="this.src='https://via.placeholder.com/80/06b6d4/ffffff?text=YAYASAN'">
+                </div>
+            </div>
+
+            <!-- Teks Utama & Badge -->
+            <div class="header-main-text">
+                <div class="badge-row">
+                    <span class="badge-official">✨ PROGRAM RESMI</span>
+                    <span class="badge-live">LIVE UPDATE</span>
+                </div>
+                <h1 class="main-title">Makanan Bergizi Gratis</h1>
+            </div>
+
+            <!-- Card Informasi SPPG & Yayasan (Grid 2 Kolom) -->
+            <div class="institution-card">
+                <div class="inst-item">
+                    <span class="inst-label">🏢 SPPG OPERASIONAL</span>
+                    <span class="inst-value">SPPG Kuamang Alai</span>
+                </div>
+                <div class="inst-divider"></div>
+                <div class="inst-item">
+                    <span class="inst-label">🏛️ YAYASAN PENGELOLA</span>
+                    <span class="inst-value">Yayasan Nan Tigo Hati Berbagi</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner Tanggal -->
+        <div class="date-banner">
+            <span>📅</span>
+            <span id="date-text">Memuat Tanggal...</span>
+        </div>
+
+        <!-- Showcase Foto Menu (BISA DIKLIK UNTUK ZOOM FOTO) -->
+        <div class="image-container image-zoomable" onclick="openLightbox()">
+            <span class="badge-status">Sajian Hari Ini 🔍 (Klik Perbesar)</span>
+            <img id="foto-menu-img" src="images/menu.jpg" alt="Foto Menu Hari Ini" class="menu-image" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700'">
+        </div>
+
+        <!-- Alert Imbauan & SOP Konsumsi -->
+        <section class="alert-card">
+            <div class="alert-header">
+                <h2>⚠️ WAJIB DIPERHATIKAN:</h2>
+            </div>
+            <ul class="alert-list">
+                <li>Ompreng yang sudah sampai di lokasi wajib dicium terlebih dahulu sebelum dibagikan. Jika ada bau tidak sedap atau aneh, dilarang keras untuk dikonsumsi.</li>
+                <li>Cuci tangan pakai sabun sebelum dan sesudah makan.</li>
+                <li>Makanan wajib dihabiskan di area tempat makan atau lingkungan sekolah.</li>
+                <li>Dilarang keras membawa pulang makanan ke rumah demi menghindari pertumbuhan bakteri di perjalanan.</li>
+                <li>Pastikan wadah ompreng yang diterima dalam kondisi bersih, higienis, dan tidak rusak.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION: ISI KOMPRENG HARI INI (5 KOMPONEN STANDAR MBG) -->
+        <div class="section-title-wrap">
+            <h2>🍱 Isi Kompreng Hari Ini</h2>
+            <span class="completion-tag">100% Lengkap & Seimbang</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: 100%;"></div>
+        </div>
+        
+        <div class="kompreng-grid-wrapper">
+            <!-- 1. Makanan Pokok -->
+            <div class="kompreng-card">
+                <div class="kompreng-icon-box">🍚</div>
+                <div class="kompreng-details">
+                    <span class="kompreng-category">Makanan Pokok</span>
+                    <div class="kompreng-divider"></div>
+                    <span id="display-menu-karbo" class="kompreng-title">Nasi Putih Sehat</span>
+                </div>
+            </div>
+
+            <!-- 2. Lauk Hewani (Icon Universal) -->
+            <div class="kompreng-card">
+                <div class="kompreng-icon-box">🍖</div>
+                <div class="kompreng-details">
+                    <span class="kompreng-category">Protein Hewani</span>
+                    <div class="kompreng-divider"></div>
+                    <span id="display-menu-protein" class="kompreng-title">Lauk Hewani Hari Ini</span>
+                </div>
+            </div>
+
+            <!-- 3. Lauk Nabati (Icon Universal) -->
+            <div class="kompreng-card">
+                <div class="kompreng-icon-box">🫘</div>
+                <div class="kompreng-details">
+                    <span class="kompreng-category">Protein Nabati</span>
+                    <div class="kompreng-divider"></div>
+                    <span id="display-menu-nabati" class="kompreng-title">Lauk Nabati Hari Ini</span>
+                </div>
+            </div>
+
+            <!-- 4. Sayuran (Icon Universal) -->
+            <div class="kompreng-card">
+                <div class="kompreng-icon-box">🥗</div>
+                <div class="kompreng-details">
+                    <span class="kompreng-category">Sayuran</span>
+                    <div class="kompreng-divider"></div>
+                    <span id="display-menu-sayur" class="kompreng-title">Sayuran Hari Ini</span>
+                </div>
+            </div>
+
+            <!-- 5. Buah (Full Width, Icon Universal) -->
+            <div class="kompreng-card full-width">
+                <div class="kompreng-icon-box">🧺</div>
+                <div class="kompreng-details">
+                    <span class="kompreng-category">Buah </span>
+                    <div class="kompreng-divider"></div>
+                    <span id="display-menu-buah" class="kompreng-title">Buah Segar Hari Ini</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: KANDUNGAN GIZI (TABEL 3 PORSI LENGKAP: BALITA, KECIL, BESAR) -->
+        <div class="gizi-card-container">
+            <div class="section-title-wrap">
+                <h2>📊 Kandungan Gizi Makanan</h2>
+                <span class="completion-tag">AKG Terpenuhi</span>
+            </div>
+
+            <!-- Tabel Komparasi Porsi -->
+            <div class="gizi-table-wrapper">
+                <table class="gizi-table">
+                    <thead>
+                        <tr>
+                            <th class="th-label">Nutrisi</th>
+                            <th class="th-balita">
+                                👶 Balita
+                              
+                            </th>
+                            <th class="th-kecil">
+                                🥗 Porsi Kecil
+                             
+                            </th>
+                            <th class="th-besar">
+                                🍱 Porsi Besar
+                               
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-label">⚡ Energi</td>
+                            <td id="val-balita-energi" class="td-val">350 Kcal</td>
+                            <td id="val-kecil-energi" class="td-val">450 Kcal</td>
+                            <td id="val-besar-energi" class="td-val highlight">650 Kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">🦾 Protein</td>
+                            <td id="val-balita-protein" class="td-val">12 Gram</td>
+                            <td id="val-kecil-protein" class="td-val">18 Gram</td>
+                            <td id="val-besar-protein" class="td-val highlight">28 Gram</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">💧 Lemak</td>
+                            <td id="val-balita-lemak" class="td-val">10 Gram</td>
+                            <td id="val-kecil-lemak" class="td-val">12 Gram</td>
+                            <td id="val-besar-lemak" class="td-val highlight">18 Gram</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">🌾 Karbohidrat</td>
+                            <td id="val-balita-karbo" class="td-val">35 Gram</td>
+                            <td id="val-kecil-karbo" class="td-val">50 Gram</td>
+                            <td id="val-besar-karbo" class="td-val highlight">75 Gram</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">🌱 Serat</td>
+                            <td id="val-balita-serat" class="td-val">3 Gram</td>
+                            <td id="val-kecil-serat" class="td-val">4 Gram</td>
+                            <td id="val-besar-serat" class="td-val highlight">6 Gram</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- FOOTNOTE STANDAR AKG KEMENKES & BGN -->
+            <div class="akg-footnote">
+                ℹ️ <em>Kandungan gizi telah disesuaikan dengan Standar Angka Kecukupan Gizi (AKG) Kementerian Kesehatan & Badan Gizi Nasional (BGN).</em>
+            </div>
+        </div>
+
+        <!-- KALENDER OPERASIONAL MBG -->
+        <section class="calendar-card">
+            <div class="calendar-header">
+                <h3>📆 Jadwal MBG Minggu Ini</h3>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-col"><span class="d-label">Sen</span><div class="d-box">7<span class="tag">MBG</span></div></div>
+                <div class="day-col"><span class="d-label">Sel</span><div class="d-box">8<span class="tag">MBG</span></div></div>
+                <div class="day-col"><span class="d-label">Rab</span><div class="d-box">9<span class="tag">MBG</span></div></div>
+                <div class="day-col"><span class="d-label">Kam</span><div class="d-box">10<span class="tag">MBG</span></div></div>
+                <div class="day-col"><span class="d-label">Jum</span><div class="d-box">11<span class="tag">MBG</span></div></div>
+                <div class="day-col"><span class="d-label">Sab</span><div class="d-box holiday">12<span class="tag">Libur</span></div></div>
+                <div class="day-col"><span class="d-label">Min</span><div class="d-box holiday">13<span class="tag">Libur</span></div></div>
+            </div>
+        </section>
+
+        <!-- CARD LAYANAN PENGADUAN & SARAN (WHATSAPP) -->
+        <section class="feedback-card">
+            <div class="feedback-content">
+                <div class="feedback-icon">💬</div>
+                <div class="feedback-text">
+                    <h4>Layanan Pengaduan & Saran</h4>
+                    <p>Punya kendala  atau saran untuk SPPG Kuamang Alai?</p>
+                </div>
+            </div>
+            <a href="https://wa.me/6281381478147?text=Halo%20SPPG%20Kuamang%20Alai,%20saya%20ingin%20menyampaikan%20saran/pengaduan%20terkait%20menu%20MBG" target="_blank" class="feedback-btn">
+                <span>Hubungi Petugas SPPG</span>
+            </a>
+        </section>
+
+        <!-- FOOTER IDENTITAS DAPUR & YAYASAN -->
+        <footer class="footer-card">
+            <div class="footer-row">
+                <div class="footer-icon-glow">👨‍🍳</div>
+                <div class="footer-text">
+                    <span class="footer-label">Disiapkan di Dapur Satuan Pelayanan</span>
+                    <strong class="footer-value">Dapur SPPG Kuamang Alai</strong>
+                </div>
+            </div>
+
+            <div class="footer-line"></div>
+
+            <div class="footer-row">
+                <div class="footer-icon-glow">🏛️</div>
+                <div class="footer-text">
+                    <span class="footer-label">Dikelola & Disesuaikan Oleh</span>
+                    <strong class="footer-value">Yayasan Nan Tigo Hati Berbagi</strong>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- MODAL LIGHTBOX FOTO ZOOM -->
+    <div id="image-lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Foto Menu Fullsize">
+        <div id="lightbox-caption">Foto Menu Kompreng Hari Ini</div>
+    </div>
+
+    <!-- 1. Supabase Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- 2. Script Utama -->
+    <script src="js/script.js"></script>
+</body>
+</html>

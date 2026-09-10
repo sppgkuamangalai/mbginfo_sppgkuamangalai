@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Update Menu MBG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="main-card admin-card">
+        
+        <header class="header">
+            <!-- Pembungkus Dua Logo Sejajar -->
+            <div class="logo-row-container">
+                <!-- Logo 1: BGN -->
+                <div class="logo-box-item">
+                    <div class="logo-glow"></div>
+                    <img src="images/logo-mbg.png" alt="Logo MBG" class="logo-img-custom" onerror="this.src='https://via.placeholder.com/80/1e3a8a/ffffff?text=MBG'">
+                </div>
+
+                <!-- Garis Pembatas Vertikal -->
+                <div class="logo-v-line"></div>
+
+                <!-- Logo 2: Yayasan -->
+                <div class="logo-box-item">
+                    <div class="logo-glow"></div>
+                    <img src="images/logoyayasan.png" alt="Logo Yayasan" class="logo-img-custom" onerror="this.src='https://via.placeholder.com/80/06b6d4/ffffff?text=YAYASAN'">
+                </div>
+            </div>
+
+            <!-- Teks Judul Header -->
+            <div class="header-main-text">
+                <div class="badge-row">
+                    <span class="badge-official">🔒 PANEL ADMIN SPPG KUAMANG ALAI</span>
+                </div>
+                <h1 class="main-title">Update Menu MBG</h1>
+            </div>
+        </header>
+
+        <!-- Form Admin Clean Layout -->
+        <form id="admin-form" class="admin-form-container">
+            
+            <!-- 1. Input Tanggal -->
+            <div class="form-group">
+                <label class="form-label">📅 Tanggal Pelaksanaan Menu</label>
+                <input type="date" id="input-tanggal" class="form-input" required>
+            </div>
+
+            <!-- 2. Upload Foto dari Perangkat -->
+            <div class="form-group">
+                <label class="form-label">📸 Pilih Foto Menu dari Perangkat (Galeri/File Manager)</label>
+                <input type="file" id="input-foto-file" class="form-input-file" accept="image/*" required>
+                <!-- Preview Gambar -->
+                <div class="image-preview-wrapper" id="preview-wrapper" style="display: none;">
+                    <img id="image-preview" src="" alt="Preview Foto Menu" class="preview-img">
+                </div>
+            </div>
+
+            <!-- 3. Input Isi Kompreng Menu Hari Ini (5 Komponen Standar MBG) -->
+            <div class="form-group">
+                <label class="form-label">🍱 Isi Kompreng Hari Ini (5 Komponen MBG)</label>
+                <input type="text" id="menu-karbo" class="form-input" placeholder="🍚 1. Makanan Pokok (misal: Nasi Putih Sehat)" required>
+                <input type="text" id="menu-protein" class="form-input" placeholder="🍗 2. Lauk Hewani (misal: Ayam Bakar Pedas)" required>
+                <input type="text" id="menu-nabati" class="form-input" placeholder="🧆 3. Lauk Nabati (misal: Tahu / Tempe Goreng)" required>
+                <input type="text" id="menu-sayur" class="form-input" placeholder="🥗 4. Sayur (misal: Tumis Buncis Wortel)" required>
+                <input type="text" id="menu-buah" class="form-input" placeholder="🍎 5. Buah (misal: Buah Pisang Segar)" required>
+            </div>
+
+            <!-- Tombol Auto-Fill Format Satuan Gizi -->
+            <button type="button" class="btn-secondary" onclick="isiFormatGizi()">⚡ Isi Otomatis Format (Kcal & Gram)</button>
+
+            <!-- 4. Input Kandungan Gizi Porsi Balita -->
+            <div class="form-group">
+                <label class="form-label">👶 Kandungan Gizi Porsi Balita (1 - 5 Tahun)</label>
+                <div class="input-stacked">
+                    <input type="text" id="balita-energi" class="form-input" placeholder="Energi (misal: 350 Kcal)" required>
+                    <input type="text" id="balita-protein" class="form-input" placeholder="Protein (misal: 12 Gram)" required>
+                    <input type="text" id="balita-lemak" class="form-input" placeholder="Lemak (misal: 10 Gram)" required>
+                    <input type="text" id="balita-karbo" class="form-input" placeholder="Karbohidrat (misal: 35 Gram)" required>
+                    <input type="text" id="balita-serat" class="form-input" placeholder="Serat (misal: 3 Gram)" required>
+                </div>
+            </div>
+
+            <!-- 5. Input Kandungan Gizi Porsi Kecil -->
+            <div class="form-group">
+                <label class="form-label">🥗 Kandungan Gizi Porsi Kecil (PAUD - 3 SD)</label>
+                <div class="input-stacked">
+                    <input type="text" id="kecil-energi" class="form-input" placeholder="Energi (misal: 450 Kcal)" required>
+                    <input type="text" id="kecil-protein" class="form-input" placeholder="Protein (misal: 18 Gram)" required>
+                    <input type="text" id="kecil-lemak" class="form-input" placeholder="Lemak (misal: 12 Gram)" required>
+                    <input type="text" id="kecil-karbo" class="form-input" placeholder="Karbohidrat (misal: 50 Gram)" required>
+                    <input type="text" id="kecil-serat" class="form-input" placeholder="Serat (misal: 4 Gram)" required>
+                </div>
+            </div>
+
+            <!-- 6. Input Kandungan Gizi Porsi Besar -->
+            <div class="form-group">
+                <label class="form-label">🍱 Kandungan Gizi Porsi Besar (4 SD - SMA)</label>
+                <div class="input-stacked">
+                    <input type="text" id="besar-energi" class="form-input" placeholder="Energi (misal: 650 Kcal)" required>
+                    <input type="text" id="besar-protein" class="form-input" placeholder="Protein (misal: 28 Gram)" required>
+                    <input type="text" id="besar-lemak" class="form-input" placeholder="Lemak (misal: 18 Gram)" required>
+                    <input type="text" id="besar-karbo" class="form-input" placeholder="Karbohidrat (misal: 75 Gram)" required>
+                    <input type="text" id="besar-serat" class="form-input" placeholder="Serat (misal: 6 Gram)" required>
+                </div>
+            </div>
+
+            <!-- Tombol Submit Utama -->
+            <button type="submit" id="btn-submit" class="btn-primary">🚀 Simpan & Update Halaman Utama</button>
+            <div id="status-msg" class="status-msg"></div>
+
+        </form>
+
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
